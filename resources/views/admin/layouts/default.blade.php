@@ -35,6 +35,6 @@
 <!-- 加载 Bootstrap 的所有 JavaScript 插件。你也可以根据需要只加载单个插件。 -->
 <script src="/bootstrap/js/bootstrap.min.js"></script>
 {{--包含子视图--}}
-@include("admin.layouts._footer")
+{{--@include("admin.layouts._footer")--}}
 </body>
 </html>

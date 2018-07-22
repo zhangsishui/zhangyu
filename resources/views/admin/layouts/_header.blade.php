@@ -37,7 +37,7 @@
 
             <ul class="nav navbar-nav navbar-right">
                 @guest
-                    <li><a href="#">登录</a></li>
+                    <li><a href="{{route("admin.login")}}">登录</a></li>
                 @endguest
 
                 @auth
