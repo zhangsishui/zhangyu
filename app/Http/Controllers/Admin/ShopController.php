@@ -10,7 +10,7 @@ use App\Http\Controllers\Controller;
 use Illuminate\Support\Facades\DB;
 use Illuminate\Support\Facades\File;
 
-class ShopController extends Controller
+class ShopController extends BaseController
 {
     //首页
     public function index()
@@ -144,6 +144,11 @@ class ShopController extends Controller
         });
         $request->session()->flash("success", "删除成功");
         return redirect()->route("shop.index");
+    }
+
+    //充值密码
+    public function reset(Request $request,$id){
+
     }
 
     //通过审核

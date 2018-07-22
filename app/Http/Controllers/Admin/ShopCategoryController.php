@@ -8,7 +8,7 @@ use App\Http\Controllers\Controller;
 use Illuminate\Support\Facades\File;
 use Illuminate\Support\Facades\Storage;
 
-class ShopCategoryController extends Controller
+class ShopCategoryController extends BaseController
 {
     //分类首页
     public function index()

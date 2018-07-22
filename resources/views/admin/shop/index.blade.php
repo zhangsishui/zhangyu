@@ -51,9 +51,10 @@
                 <td><img src="/uploads/images/{{$shop->shop_img}}" alt="" width="100"></td>
                 <td>
                     <a href="{{route('shop.edit',$shop)}}" class="btn btn-success">编辑</a>
-                    <a href="{{route('shop.del',$shop)}}" class="btn btn-danger">删除</a>
+                    {{--<a href="{{route('shop.del',$shop)}}" class="btn btn-danger">删除</a>--}}
                     <a href="{{route('shop.change_status',$shop)}}" class="btn btn-info">通过</a>
                     <a href="{{route('shop.change',$shop)}}" class="btn btn-warning">不通过</a>
+                    <a href="{{route('shop.reset',$shop)}}" class="btn btn-danger">重置密码</a>
                 </td>
             </tr>
         @endforeach

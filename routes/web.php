@@ -28,6 +28,7 @@ Route::domain('admin.baolemei.com')->namespace('Admin')->group(function () {
     Route::any('shop/add','ShopController@add')->name("shop.add");
     Route::any('shop/edit/{id}','ShopController@edit')->name("shop.edit");
     Route::get('shop/del/{id}','ShopController@del')->name("shop.del");
+    Route::get('shop/reset/{id}','ShopController@reset')->name("shop.reset");
     Route::get('shop/change_status/{id}','ShopController@change_status')->name("shop.change_status");
     Route::get('shop/change/{id}','ShopController@change')->name("shop.change");
     //管理员
@@ -35,12 +36,18 @@ Route::domain('admin.baolemei.com')->namespace('Admin')->group(function () {
     Route::any('admin/add','AdminController@add')->name("admin.add");
     Route::any('admin/edit/{id}','AdminController@edit')->name("admin.edit");
     Route::any('admin/del/{id}','AdminController@del')->name("admin.del");
+    Route::any('admin/change_pwd/{id}','AdminController@change_pwd')->name("admin.change_pwd");
     Route::any('admin/login','AdminController@login')->name("admin.login");
+    Route::any('admin/logout','AdminController@logout')->name("admin.logout");
 });
 
 //商户路由
 Route::domain('shop.baolemei.com')->namespace('Shop')->group(function () {
     //商铺
+    Route::get('user/index','UserController@index')->name("user.index");
+    Route::any('user/login','UserController@login')->name("user.login");
+    Route::any('user/logout','UserController@logout')->name("user.logout");
+    Route::any('user/change_pwd/{id}','UserController@change_pwd')->name("user.change_pwd");
 
 });
 
