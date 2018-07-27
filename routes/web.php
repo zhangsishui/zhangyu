@@ -36,7 +36,7 @@ Route::domain('admin.baolemei.com')->namespace('Admin')->group(function () {
     Route::any('admin/add','AdminController@add')->name("admin.add");
     Route::any('admin/edit/{id}','AdminController@edit')->name("admin.edit");
     Route::any('admin/del/{id}','AdminController@del')->name("admin.del");
-    Route::any('admin/change_pwd/{id}','AdminController@change_pwd')->name("admin.change_pwd");
+    Route::any('admin/changePwd/{id}','AdminController@changePwd')->name("admin.changePwd");
     Route::any('admin/login','AdminController@login')->name("admin.login");
     Route::any('admin/logout','AdminController@logout')->name("admin.logout");
 });
@@ -47,7 +47,20 @@ Route::domain('shop.baolemei.com')->namespace('Shop')->group(function () {
     Route::get('user/index','UserController@index')->name("user.index");
     Route::any('user/login','UserController@login')->name("user.login");
     Route::any('user/logout','UserController@logout')->name("user.logout");
-    Route::any('user/change_pwd/{id}','UserController@change_pwd')->name("user.change_pwd");
+    Route::any('user/changePwd/{id}','UserController@changePwd')->name("user.changePwd");
+    //菜品分类
+    Route::get('menuCategory/index','MenuCategoryController@index')->name("menuCategory.index");
+    Route::any('menuCategory/add','MenuCategoryController@add')->name("menuCategory.add");
+    Route::any('menuCategory/edit/{id}','MenuCategoryController@edit')->name("menuCategory.edit");
+    Route::any('menuCategory/del/{id}','MenuCategoryController@del')->name("menuCategory.del");
+    Route::any('menuCategory/default/{id}','MenuCategoryController@default')->name("menuCategory.default");
+    //菜品
+    Route::get('menu/index','MenuController@index')->name("menu.index");
+    Route::any('menu/add','MenuController@add')->name("menu.add");
+    Route::any('menu/edit/{id}','MenuController@edit')->name("menu.edit");
+    Route::any('menu/del/{id}','MenuController@del')->name("menu.del");
+    //test
+    Route::any('test/test','MenuController@test')->name("test.test");
 
 });
 

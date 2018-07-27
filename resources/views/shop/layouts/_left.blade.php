@@ -2,30 +2,29 @@
 
     <div class="main-left-col">
 
-        <h1><i class="icon-shopping-cart icon-large"></i> Adminize</h1>
+        <h1><i class="icon-shopping-cart icon-large"></i> FoodsShop</h1>
 
         <ul class="side-nav">
 
             <li class="active">
-                <a href="index.html"><i class="icon-home"></i> Dashboard</a>
+                <a href="#"><i class="icon-home"></i>商户首页</a>
             </li>
             <li class="dropdown">
-                <a class="dropdown-toggle" data-toggle="collapse" data-target="#website-dropdown" href="#"><i class="icon-sitemap"></i> Website <b class="caret"></b></a>
+                <a class="dropdown-toggle" data-toggle="collapse" data-target="#website-dropdown" href="#"><i class="icon-sitemap"></i> 菜品管理 <b class="caret"></b></a>
                 <ul id="website-dropdown" class="collapse">
-                    <li><a href="listing.html">Pages</a></li>
-                    <li><a href="listing.html">Menus</a></li>
+                    <li><a href="{{route("menu.index")}}">菜品首页</a></li>
+                    <li><a href="{{route("menu.add")}}">添加菜品</a></li>
                 </ul>
             </li>
             <li class="dropdown">
-                <a class="dropdown-toggle" data-toggle="collapse" data-target="#store-dropdown" href="#"><i class="icon-shopping-cart"></i> Store <b class="caret"></b></a>
+                <a class="dropdown-toggle" data-toggle="collapse" data-target="#store-dropdown" href="#"><i class="icon-shopping-cart"></i>菜品分类管理 <b class="caret"></b></a>
                 <ul id="store-dropdown" class="collapse">
-                    <li><a href="listing.html">Catalogue</a></li>
-                    <li><a href="orders.html">Orders</a></li>
-                    <li><a href="listing.html">Enquiries</a></li>
+                    <li><a href="{{route("menuCategory.index")}}">菜品分类首页</a></li>
+                    <li><a href="{{route("menuCategory.add")}}">添加菜品分类</a></li>
                 </ul>
             </li>
             <li class="dropdown">
-                <a class="dropdown-toggle" data-toggle="collapse" data-target="#reports-dropdown" href="#"><i class="icon-signal"></i> Reports <b class="caret"></b></a>
+                <a class="dropdown-toggle" data-toggle="collapse" data-target="#reports-dropdown" href="#"><i class="icon-signal"></i> ... <b class="caret"></b></a>
                 <ul id="reports-dropdown" class="collapse">
                     <li><a href="report.html">Sales Reports</a></li>
                     <li><a href="report.html">Product Popularity</a></li>

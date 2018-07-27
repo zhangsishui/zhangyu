@@ -13,6 +13,7 @@
     <link href="/assets/css/bootstrap.css" rel="stylesheet">
     <link href="/assets/css/font-awesome.css" rel="stylesheet">
     <link href="/assets/css/admin.css" rel="stylesheet">
+    <link rel="stylesheet" type="text/css" href="/webuploader/webuploader.css">
     
     <!-- Le HTML5 shim, for IE6-8 support of HTML5 elements -->
 </head>    
@@ -44,11 +45,13 @@
 <!-- Le javascript
 ================================================== -->
 <!-- Placed at the end of the document so the pages load faster -->
+@yield("js")
 <script src="/assets/js/jquery.min.js"></script>
 <script src="/assets/js/bootstrap.js"></script>
 <script src="/assets/js/excanvas.min.js"></script>
 <script src="/assets/js/jquery.flot.min.js"></script>
 <script src="/assets/js/jquery.flot.resize.js"></script>
+<script type="text/javascript" src="/webuploader/webuploader.js"></script>
 <script type="text/javascript">
 $(function () {
     var d1 = [];

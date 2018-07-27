@@ -173,5 +173,8 @@ return [
         'size'                  => '大小',
         'intro'                 => '简介',
         'captcha'               => '验证码',
+        'type_accumulation'     => '菜品编号',
+        'is_selected'     => '是否默认分类',
+
     ],
 ];

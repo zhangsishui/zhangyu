@@ -3,8 +3,9 @@
 namespace App\Models;
 
 use Illuminate\Database\Eloquent\Model;
+use Illuminate\Foundation\Auth\User as Authenticatable;
 
-class ShopCategory extends Model
+class ShopCategory extends Authenticatable
 {
     //
     protected $fillable=[

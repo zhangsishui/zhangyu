@@ -48,6 +48,16 @@ return [
             'root' => storage_path('app'),
         ],
 
+
+        'oss' => [
+            'driver' => 'oss',
+            'access_id' => env("ACCESS_ID"),
+            'access_key' => env("ACCESS_KEY"),
+            'bucket' => env("BUCKET"),
+            'endpoint' => env("ENDPOINT"),
+            'debug'         => false
+        ],
+
         'images' => [
             'driver' => 'local',
             'root' => public_path('uploads/images'),

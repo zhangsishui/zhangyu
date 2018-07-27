@@ -46,7 +46,7 @@
                            aria-expanded="false">{{\Illuminate\Support\Facades\Auth::guard('admin')->user()->name}}<span class="caret"></span></a>
                         <ul class="dropdown-menu">
                             <li><a href="#">个人中心</a></li>
-                            <li><a href="{{route("admin.change_pwd",\Illuminate\Support\Facades\Auth::guard('admin')->user())}}">修改密码</a></li>
+                            <li><a href="{{route("admin.changePwd",\Illuminate\Support\Facades\Auth::guard('admin')->user())}}">修改密码</a></li>
                             <li role="separator" class="divider"></li>
                             <li><a href="{{route("admin.logout")}}">注销</a></li>
                         </ul>

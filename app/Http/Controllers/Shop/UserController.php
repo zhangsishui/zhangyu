@@ -42,7 +42,7 @@ class UserController extends BaseController
         return redirect()->route("user.login");
     }
 
-    public function change_pwd(Request $request, $id)
+    public function changePwd(Request $request, $id)
     {
         $user = User::findOrFail($id);
         if ($request->isMethod("post")) {
@@ -62,6 +62,6 @@ class UserController extends BaseController
                 return redirect()->back()->withInput();
             }
         }
-        return view("shop.user.change_pwd");
+        return view("shop.user.changePwd");
     }
 }

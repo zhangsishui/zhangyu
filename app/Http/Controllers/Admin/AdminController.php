@@ -93,7 +93,7 @@ class AdminController extends BaseController
         return redirect()->route("admin.login");
     }
 
-    public function change_pwd(Request $request, $id)
+    public function changePwd(Request $request, $id)
     {
         $admin = Admin::findOrFail($id);
         if ($request->isMethod("post")) {
@@ -114,6 +114,6 @@ class AdminController extends BaseController
             }
 
         }
-        return view("admin.admin.change_pwd");
+        return view("admin.admin.changePwd");
     }
 }
