@@ -7,6 +7,7 @@ use App\Models\MenuCategory;
 use App\Models\Shop;
 use Illuminate\Http\Request;
 use App\Http\Controllers\Controller;
+use Illuminate\Support\Facades\Auth;
 
 class MenuCategoryController extends BaseController
 {
@@ -23,7 +24,6 @@ class MenuCategoryController extends BaseController
             $this->validate($request, [
                 "name" => "required",
                 "is_selected" => "required",
-                "shop_id" => "required",
                 "type_accumulation" => "required",
                 "description" => "required",
             ]);
@@ -31,6 +31,7 @@ class MenuCategoryController extends BaseController
                 MenuCategory::where('is_selected', 1)->update(['is_selected' => 0]);
             }
             $data = $request->all();
+            $data['shop_id'] = Auth::user()->shop_id;
             MenuCategory::create($data);
             session()->flash('success', '添加成功');
             return redirect()->route("menuCategory.index");
@@ -49,13 +50,13 @@ class MenuCategoryController extends BaseController
             $this->validate($request, [
                 "name" => "required",
                 "is_selected" => "required",
-                "shop_id" => "required",
                 "type_accumulation" => "required",
                 "description" => "required",
             ]);
             if ($request->is_selected === "1") {
                 MenuCategory::where('is_selected', 1)->update(['is_selected' => 0]);
             }
+            $menu_category->shop_id = Auth::user()->shop_id;
             $menu_category->update($request->all());
             session()->flash('success', '修改成功');
             return redirect()->route("menuCategory.index");

@@ -72,7 +72,7 @@
                     <td>{{$menu->shop->shop_name}}</td>
                     <td>{{$menu->goods_price}}</td>
                     <td>{{$menu->status ? "是" : "否"}}</td>
-                    <td><img src="/uploads/images/{{$menu->goods_img}}" alt="" width="50"></td>
+                    <td><img src="{{$menu->goods_img}}" alt="" width="50"></td>
                     <td class="actions">
                         <a class="btn btn-small btn-danger" data-toggle="modal" href="{{route("menu.del",$menu)}}">删除</a>
                         <a class="btn btn-small btn-primary" href="{{route("menu.edit",$menu)}}">修改</a>

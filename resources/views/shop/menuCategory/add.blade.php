@@ -31,16 +31,7 @@
                     <input type="radio" id="inputSuccess" name="is_selected" value="0">否
                 </div>
             </div>
-            <div class="control-group success">
-                <label class="control-label" for="selectError">所属商铺</label>
-                <div class="controls">
-                    <select id="selectError" name="shop_id">
-                        @foreach($shops as $shop)
-                        <option value="{{$shop->id}}">{{$shop->shop_name}}</option>
-                            @endforeach
-                    </select>
-                </div>
-            </div>
+
                 <div class="controls">
                 <input type="submit" class="btn btn-success" value="添加">
             </div>

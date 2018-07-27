@@ -7,6 +7,7 @@ use App\Models\MenuCategory;
 use App\Models\Shop;
 use Illuminate\Http\Request;
 use App\Http\Controllers\Controller;
+use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\File;
 
 class MenuController extends BaseController
@@ -43,11 +44,9 @@ class MenuController extends BaseController
         if($request->isMethod("post")){
             $this->validate($request,[
                 "goods_name"=>"required",
-                "shop_id"=>"required",
                 "category_id"=>"required",
                 "goods_price"=>"required",
                 "status"=>"required",
-                "goods_img"=>"required",
             ]);
             $menu = new Menu();
             $menu->goods_img = "";
@@ -56,6 +55,8 @@ class MenuController extends BaseController
             if ($file) {
                 $menu->goods_img = $file->store("menu_img", "images");
             }
+            $shopId = Auth::user()->shop_id;
+            $menu->shop_id = $shopId;
             $menu->save();
             session()->flash('success', '添加成功');
             //跳转至添加页面
@@ -72,7 +73,6 @@ class MenuController extends BaseController
         if($request->isMethod("post")){
             $this->validate($request,[
                 "goods_name"=>"required",
-                "shop_id"=>"required",
                 "category_id"=>"required",
                 "goods_price"=>"required",
                 "status"=>"required",
@@ -83,6 +83,7 @@ class MenuController extends BaseController
                 File::delete("uploads/images/$menu->goods_img");
                 $data['goods_img'] = $file->store("goods_img", "images");
             }
+            $menu->shop_id = Auth::user()->shop_id;
             $menu->update($data);
             session()->flash('success', '修改成功');
             //跳转至添加页面
@@ -115,5 +116,23 @@ class MenuController extends BaseController
         }
         return view("shop/test/test");
 
+    }
+    public function upload(Request $request)
+    {
+        //接收input中的name的值是file
+        $file=$request->file("file");
+        if ($file!==null){
+            $fileName = $request->file('file')->store("menu", "oss");
+            $data = [
+                'status' => 1,
+                'url' => env("ALIYUN_OSS_URL").$fileName
+            ];
+        }else{
+            $data = [
+                'status' => 0,
+                'url' => ""
+            ];
+        }
+        return $data;
     }
 }

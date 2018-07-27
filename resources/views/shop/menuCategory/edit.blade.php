@@ -35,17 +35,6 @@
                            @if($menu_category->is_selected == "0") checked @endif>否
                 </div>
             </div>
-            <div class="control-group success">
-                <label class="control-label" for="selectError">所属商铺</label>
-                <div class="controls">
-                    <select id="selectError" name="shop_id">
-                        @foreach($shops as $shop)
-                            <option value="{{$shop->id}}"
-                                    @if($shop->id === $menu_category->shop_id) selected @endif>{{$shop->shop_name}}</option>
-                        @endforeach
-                    </select>
-                </div>
-            </div>
             <div class="controls">
                 <input type="submit" class="btn btn-success" value="修改">
             </div>

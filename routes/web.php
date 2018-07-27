@@ -59,6 +59,7 @@ Route::domain('shop.baolemei.com')->namespace('Shop')->group(function () {
     Route::any('menu/add','MenuController@add')->name("menu.add");
     Route::any('menu/edit/{id}','MenuController@edit')->name("menu.edit");
     Route::any('menu/del/{id}','MenuController@del')->name("menu.del");
+    Route::any('menu/upload','MenuController@upload')->name("menu.upload");
     //test
     Route::any('test/test','MenuController@test')->name("test.test");
 

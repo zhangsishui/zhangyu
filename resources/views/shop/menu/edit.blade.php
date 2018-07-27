@@ -21,17 +21,6 @@
                 </div>
             </div>
             <div class="control-group success">
-                <label class="control-label" for="selectError">所属商铺</label>
-                <div class="controls">
-                    <select id="selectError" name="shop_id">
-                        @foreach($shops as $shop)
-                            <option value="{{$shop->id}}"
-                                    @if($shop->id===$menu->shop_id) selected @endif>{{$shop->shop_name}}</option>
-                        @endforeach
-                    </select>
-                </div>
-            </div>
-            <div class="control-group success">
                 <label class="control-label" for="selectError">所属分类</label>
                 <div class="controls">
                     <select id="selectError" name="category_id">
