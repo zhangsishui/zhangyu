@@ -18,3 +18,8 @@ Route::middleware('auth:api')->get('/user', function (Request $request) {
 });
 Route::get('shop/list','Api\ShopController@list');
 Route::get('shop/index','Api\ShopController@index');
+Route::post('member/reg','Api\MemberController@reg');
+Route::any('member/sms','Api\MemberController@sms');
+Route::post('member/loginCheck','Api\MemberController@loginCheck');
+Route::any('member/changePassword','Api\MemberController@changePassword');
+Route::any('member/forgetPassword','Api\MemberController@forgetPassword');
