@@ -2,7 +2,7 @@
 
     <div class="main-left-col">
 
-        <h1><i class="icon-shopping-cart icon-large"></i> FoodsShop</h1>
+        <h1><i class="icon-shopping-cart icon-large"></i> BaoLeMei</h1>
 
         <ul class="side-nav">
 

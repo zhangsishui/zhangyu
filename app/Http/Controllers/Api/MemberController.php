@@ -110,9 +110,9 @@ class MemberController extends BaseController
     public function changePassword(Request $request)
     {
         $data = $request->all();
-        $member = Member::where("id",1);
-        if ($member && Hash::check($data('oldPassword'), $member->password)) {
-            $data['password'] = bcrypt($data['newPassword']);
+        $member = Member::find($data['id']);
+        if ($member && Hash::check($data['oldPassword'], $member->password)) {
+            $data['password'] = Hash::make($data['newPassword']);
             $member->update($data);
 
             return [
@@ -157,5 +157,12 @@ class MemberController extends BaseController
             'message'=>"重置密码成功"
         ];
 
+    }
+    //用户详情
+    public function detail()
+    {
+        $userId = \request()->input("user_id");
+        $member = Member::find($userId);
+        return $member;
     }
 }

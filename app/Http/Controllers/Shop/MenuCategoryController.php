@@ -14,7 +14,8 @@ class MenuCategoryController extends BaseController
     //
     public function index()
     {
-        $menu_cates = MenuCategory::all();
+        $shopId = Auth::user()->shop_id;
+        $menu_cates = MenuCategory::where("shop_id",$shopId)->get();
         return view("shop.menuCategory.index", compact("menu_cates"));
     }
 

@@ -39,6 +39,12 @@ Route::domain('admin.baolemei.com')->namespace('Admin')->group(function () {
     Route::any('admin/changePwd/{id}','AdminController@changePwd')->name("admin.changePwd");
     Route::any('admin/login','AdminController@login')->name("admin.login");
     Route::any('admin/logout','AdminController@logout')->name("admin.logout");
+
+    //活动管理
+    Route::get('active/index','ActiveController@index')->name("active.index");
+    Route::any('active/add','ActiveController@add')->name("active.add");
+    Route::any('active/edit/{id}','ActiveController@edit')->name("active.edit");
+    Route::get('active/del/{id}','ActiveController@del')->name("active.del");
 });
 
 //商户路由

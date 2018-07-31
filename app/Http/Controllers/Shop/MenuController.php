@@ -19,7 +19,7 @@ class MenuController extends BaseController
         $high_price = $request->high_price;
         $category = $request->category;
         $keywords = $request->keywords;
-        $query = Menu::orderBy("id");
+        $query = Menu::where("shop_id",Auth::user()->shop_id);
         if($deep_price!==null){
             $query->where("goods_price",">=",$deep_price);
         }
@@ -40,7 +40,6 @@ class MenuController extends BaseController
     public function add(Request $request)
     {
         $shops = Shop::all();
-        $categories = MenuCategory::all();
         if($request->isMethod("post")){
             $this->validate($request,[
                 "goods_name"=>"required",
@@ -57,6 +56,7 @@ class MenuController extends BaseController
             }
             $shopId = Auth::user()->shop_id;
             $menu->shop_id = $shopId;
+            $categories = MenuCategory::where("shop_id",$shopId);
             $menu->save();
             session()->flash('success', '添加成功');
             //跳转至添加页面
@@ -68,7 +68,7 @@ class MenuController extends BaseController
     public function edit(Request $request,$id)
     {
         $shops = Shop::all();
-        $categories = MenuCategory::all();
+        $categories = MenuCategory::where("shop_id",Auth::user()->shop_id)->get();
         $menu = Menu::findOrFail($id);
         if($request->isMethod("post")){
             $this->validate($request,[

@@ -22,9 +22,13 @@
                 <label class="control-label" for="selectError">所属分类</label>
                 <div class="controls">
                     <select id="selectError" name="category_id">
-                        @foreach($categories as $category)
-                            <option value="{{$category->id}}">{{$category->name}}</option>
-                        @endforeach
+                        @if(isset($categories))
+                            @foreach($categories as $category)
+                                <option value="{{$category->id}}">{{$category->name}}</option>
+                            @endforeach
+                        @else
+                            <option value="">没有分类</option>
+                        @endif
                     </select>
                 </div>
             </div>

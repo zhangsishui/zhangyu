@@ -22,15 +22,13 @@
 
                 <li class="dropdown">
                     <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true"
-                       aria-expanded="false">Dropdown <span class="caret"></span></a>
+                       aria-expanded="false">管理列表<span class="caret"></span></a>
                     <ul class="dropdown-menu">
-                        <li><a href="#">Action</a></li>
-                        <li><a href="#">Another action</a></li>
-                        <li><a href="#">注销</a></li>
+                        <li><a href="{{route("admin.index")}}">管理员管理</a></li>
                         <li role="separator" class="divider"></li>
-                        <li><a href="#">注销</a></li>
+                        <li><a href="{{route("shop.index")}}">商家管理</a></li>
                         <li role="separator" class="divider"></li>
-                        <li><a href="#">One more separated link</a></li>
+                        <li><a href="{{route("active.index")}}">活动管理</a></li>
                     </ul>
                 </li>
             </ul>

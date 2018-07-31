@@ -8,6 +8,6 @@ class Member extends Model
 {
     //
     protected $fillable=[
-        "username","password","tel"
+        "username","password","tel","money","jifen"
     ];
 }
