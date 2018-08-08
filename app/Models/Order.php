@@ -34,4 +34,8 @@ class Order extends Model
         return $this->hasMany(OrderGood::class, "order_id");
     }
 
+    public function member()
+    {
+        return $this->belongsTo(Member::class,"user_id");
+    }
 }

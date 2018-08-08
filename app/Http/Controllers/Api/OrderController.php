@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers\Api;
 
+use App\Mail\OrderShipped;
 use App\Models\Address;
 use App\Models\Cart;
 use App\Models\Member;
@@ -9,10 +10,13 @@ use App\Models\Menu;
 use App\Models\Order;
 use App\Models\OrderGood;
 use App\Models\Shop;
+use App\Models\User;
 use Illuminate\Database\QueryException;
 use Illuminate\Http\Request;
 use App\Http\Controllers\Controller;
 use Illuminate\Support\Facades\DB;
+use Illuminate\Support\Facades\Mail;
+use Mrgoon\AliSms\AliSms;
 
 class OrderController extends Controller
 {
@@ -58,6 +62,9 @@ class OrderController extends Controller
                 $data1['goods_price'] = $good->goods_price;
                 OrderGood::create($data1);
             }
+            $user = User::where("shop_id", $data['shop_id'])->first();
+            //通过审核发送邮件
+            Mail::to($user)->send(new OrderShipped($order));
 //提交事务
             DB::commit();
         } catch (QueryException $exception) {
@@ -120,6 +127,14 @@ class OrderController extends Controller
         //更改订单状态
         $order->status = 1;
         $order->save();
+        $config = [
+            'access_key' => 'LTAIezSoVAhgeTEz',
+            'access_secret' => 'zN11X4TLlhAMDSvWLhZA8EVtPHi0mK',
+            'sign_name' => '张雨',
+        ];
+
+        $aliSms = new AliSms();$aliSms->sendSms($member->tel, 'SMS_141620105', ['name'=> $member->username], $config);
+
         return [
             'status' => 'true',
             "message" => "支付成功"
@@ -130,7 +145,7 @@ class OrderController extends Controller
     public function list(Request $request)
     {
         $userId = $request->input('user_id');
-        $orders = Order::where("user_id", $userId)->get();
+        $orders = Order::where("user_id", $userId)->orderBy("created_at", "desc")->get();
 
         foreach ($orders as $k => $order) {
             $shops = Shop::find($order->shop_id);

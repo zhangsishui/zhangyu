@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers\Admin;
 
+use App\Mail\RegShipped;
 use App\Models\Shop;
 use App\Models\ShopCategory;
 use App\Models\User;
@@ -9,6 +10,7 @@ use Illuminate\Http\Request;
 use App\Http\Controllers\Controller;
 use Illuminate\Support\Facades\DB;
 use Illuminate\Support\Facades\File;
+use Illuminate\Support\Facades\Mail;
 
 class ShopController extends BaseController
 {
@@ -148,7 +150,10 @@ class ShopController extends BaseController
 
     //充值密码
     public function reset(Request $request,$id){
-
+        $shop = Shop::findOrFail($id);
+        $data['password'] = bcrypt("123");
+        $shop->update($data);
+        return redirect()->route("shop.index")->with("success","重置密码成功");
     }
 
     //通过审核
@@ -166,6 +171,8 @@ class ShopController extends BaseController
         $shop = Shop::findOrfail($id);
         $shop->status = 1;
         $shop->update($request->all());
+        $user = User::where("shop_id",$id)->first();
+        Mail::to($user)->send(new RegShipped($shop));
         return back();
     }
 }

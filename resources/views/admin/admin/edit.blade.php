@@ -43,6 +43,17 @@
                 <input type="email" class="form-control" id="inputEmail3" placeholder="邮箱" name="email" value="{{old("email",$admin->email)}}">
             </div>
         </div>
+        <div class="form-group">
+            <label for="inputEmail3" class="col-sm-2 control-label">选择角色</label>
+            <div class="col-sm-8">
+                @foreach($roles as $role)
+                    <input type="checkbox" class="checkbox-inline" id="inputEmail3" name="role[]"
+                           value="{{$role->name}}"
+                           @if($admin->hasRole($role->name)) checked @endif
+                    >{{$role->name}}
+                @endforeach
+            </div>
+        </div>
 
         <div class="form-group">
             <div class="col-sm-offset-2 col-sm-8">

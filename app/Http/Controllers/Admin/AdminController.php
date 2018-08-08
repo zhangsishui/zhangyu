@@ -7,18 +7,21 @@ use Illuminate\Http\Request;
 use App\Http\Controllers\Controller;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Hash;
+use Spatie\Permission\Models\Role;
 
 class AdminController extends BaseController
 {
     //
     public function index()
     {
+
         $admins = Admin::paginate(3);
         return view("admin.admin.index", compact("admins"));
     }
 
     public function add(Request $request)
     {
+        $roles = Role::all();
         if ($request->isMethod("post")) {
             $this->validate($request, [
                 "name" => "required",
@@ -27,17 +30,19 @@ class AdminController extends BaseController
             ]);
             $data = $request->all();
             $data['password'] = bcrypt($data['password']);
-            Admin::create($data);
+            $admin = Admin::create($data);
+            $admin->syncRoles($request->post('role'));
             session()->flash('success', '添加成功');
             //跳转至添加页面
             return redirect()->route("admin.index");
         }
-        return view("admin.admin.add", compact("add"));
+        return view("admin.admin.add",compact("roles"));
     }
 
     public function edit(Request $request, $id)
     {
         $admin = Admin::findOrFail($id);
+        $roles = Role::all();
         if ($request->isMethod("post")) {
             $this->validate($request, [
                 "name" => "required",
@@ -45,12 +50,13 @@ class AdminController extends BaseController
             ]);
             $data = $request->all();
             $admin->update($data);
+            $admin->syncRoles($request->post('role'));
             session()->flash('success', '修改成功');
             //跳转至添加页面
             return redirect()->route("admin.index");
 
         }
-        return view("admin.admin.edit", compact("admin"));
+        return view("admin.admin.edit", compact("admin","roles"));
     }
 
     public function del(Request $request, $id)

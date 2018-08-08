@@ -16,21 +16,20 @@
         <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
             <ul class="nav navbar-nav">
 
-                @yield("li-index")
-
-                @yield("li-about")
-
+                <li class="active"><a href="{{route("shop.index")}}">首页 <span class="sr-only">(current)</span></a></li>
+                @foreach(\App\Models\Nav::where("pid",0)->get() as $k1 => $v1)
                 <li class="dropdown">
                     <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true"
-                       aria-expanded="false">管理列表<span class="caret"></span></a>
+                       aria-expanded="false">{{$v1->name}}<span class="caret"></span></a>
                     <ul class="dropdown-menu">
-                        <li><a href="{{route("admin.index")}}">管理员管理</a></li>
+                        @foreach(\App\Models\Nav::where("pid",$v1->id)->get() as $k2 => $v2)
+                        <li><a href="{{route($v2->url)}}">{{$v2->name}}</a></li>
                         <li role="separator" class="divider"></li>
-                        <li><a href="{{route("shop.index")}}">商家管理</a></li>
-                        <li role="separator" class="divider"></li>
-                        <li><a href="{{route("active.index")}}">活动管理</a></li>
+                            @endforeach
                     </ul>
                 </li>
+                @endforeach
+
             </ul>
 
             <ul class="nav navbar-nav navbar-right">

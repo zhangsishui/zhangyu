@@ -24,19 +24,17 @@
                 </ul>
             </li>
             <li class="dropdown">
-                <a class="dropdown-toggle" data-toggle="collapse" data-target="#reports-dropdown" href="#"><i class="icon-signal"></i> ... <b class="caret"></b></a>
+                <a class="dropdown-toggle" data-toggle="collapse" data-target="#reports-dropdown" href="#"><i class="icon-signal"></i> 订单管理 <b class="caret"></b></a>
                 <ul id="reports-dropdown" class="collapse">
-                    <li><a href="report.html">Sales Reports</a></li>
-                    <li><a href="report.html">Product Popularity</a></li>
-                    <li><a href="report.html">Member Registrations</a></li>
+                    <li><a href="{{route("order.index")}}">订单列表</a></li>
+
                 </ul>
             </li>
             <li class="dropdown">
-                <a class="dropdown-toggle" data-toggle="collapse" data-target="#members-dropdown" href="#"><i class="icon-group"></i> Members <b class="caret"></b></a>
+                <a class="dropdown-toggle" data-toggle="collapse" data-target="#members-dropdown" href="#"><i class="icon-group"></i> 店铺销量统计 <b class="caret"></b></a>
                 <ul id="members-dropdown" class="collapse">
-                    <li><a href="listing.html">Members</a></li>
-                    <li><a href="listing.html">User Groups</a></li>
-                    <li><a href="listing.html">Permissions</a></li>
+                    <li><a href="{{route("order.count")}}">订单统计</a></li>
+                    <li><a href="{{route("order.menuCount")}}">菜品销量统计</a></li>
                 </ul>
             </li>
             <li class="dropdown">

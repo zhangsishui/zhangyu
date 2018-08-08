@@ -15,6 +15,8 @@ Route::get('/', function () {
     return view('welcome');
 });
 
+
+
 //主后台路由
 Route::domain('admin.baolemei.com')->namespace('Admin')->group(function () {
     //商铺分类
@@ -45,6 +47,27 @@ Route::domain('admin.baolemei.com')->namespace('Admin')->group(function () {
     Route::any('active/add','ActiveController@add')->name("active.add");
     Route::any('active/edit/{id}','ActiveController@edit')->name("active.edit");
     Route::get('active/del/{id}','ActiveController@del')->name("active.del");
+
+    //权限管理
+    Route::get('per/index','PerController@index')->name("per.index");
+    Route::any('per/add','PerController@add')->name("per.add");
+    Route::any('per/del/{id}','PerController@del')->name("per.del");
+
+    //权限管理
+    Route::get('role/index','roleController@index')->name("role.index");
+    Route::any('role/add','roleController@add')->name("role.add");
+    Route::any('role/edit/{id}','roleController@edit')->name("role.edit");
+    Route::any('role/del/{id}','roleController@del')->name("role.del");
+
+    //统计管理
+    Route::any('order/index',"OrderController@index")->name("orders.index");
+    Route::any('order/day',"OrderController@day")->name("orders.day");
+    Route::any('order/month',"OrderController@month")->name("orders.month");
+    Route::any('order/menuDay',"OrderController@menuDay")->name("orders.menuDay");
+    Route::any('order/menuMonth',"OrderController@menuMonth")->name("orders.menuMonth");
+
+    //导航管理
+    Route::any('nav/add',"NavController@add")->name("nav.add");
 });
 
 //商户路由
@@ -66,8 +89,17 @@ Route::domain('shop.baolemei.com')->namespace('Shop')->group(function () {
     Route::any('menu/edit/{id}','MenuController@edit')->name("menu.edit");
     Route::any('menu/del/{id}','MenuController@del')->name("menu.del");
     Route::any('menu/upload','MenuController@upload')->name("menu.upload");
-    //test
-    Route::any('test/test','MenuController@test')->name("test.test");
+    //订单
+    Route::get('order/index','OrderController@index')->name("order.index");
+    Route::get('order/detail/{id}','OrderController@detail')->name("order.detail");
+    Route::get('order/off/{id}','OrderController@off')->name("order.off");
+    Route::get('order/send/{id}','OrderController@send')->name("order.send");
+    Route::get('order/count','OrderController@count')->name("order.count");
+    Route::get('order/day','OrderController@day')->name("order.day");
+    Route::get('order/month','OrderController@month')->name("order.month");
+    Route::get('order/menuCount','OrderController@menuCount')->name("order.menuCount");
+    Route::get('order/menuDay','OrderController@menuDay')->name("order.menuDay");
+    Route::get('order/menuMonth','OrderController@menuMonth')->name("order.menuMonth");
 
 });
 

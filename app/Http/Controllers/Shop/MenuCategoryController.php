@@ -84,4 +84,5 @@ class MenuCategoryController extends BaseController
         $menu_category->update(['is_selected'=> 1 ]);
         return redirect()->back();
     }
+
 }
